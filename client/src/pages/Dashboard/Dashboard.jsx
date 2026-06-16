@@ -1,143 +1,71 @@
+import Navbar from "../../components/Navbar";
+import Sidebar from "../../components/Sidebar";
+
 function Dashboard() {
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background: "#0f172a",
-        color: "white",
-        padding: "30px",
-        fontFamily: "Arial",
-      }}
-    >
-      {/* Header */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginBottom: "30px",
-        }}
-      >
-        <h1>Ludo Dashboard</h1>
+    <div className="bg-slate-900 min-h-screen">
+      <Navbar />
 
-        <button
-          onClick={() => {
-            localStorage.removeItem("token");
-            window.location.href = "/";
-          }}
-          style={{
-            padding: "10px 20px",
-            border: "none",
-            borderRadius: "8px",
-            cursor: "pointer",
-          }}
-        >
-          Logout
-        </button>
-      </div>
+      <div className="flex">
+        <Sidebar />
 
-      {/* Wallet Card */}
-      <div
-        style={{
-          background: "#1e293b",
-          padding: "20px",
-          borderRadius: "12px",
-          marginBottom: "20px",
-        }}
-      >
-        <h2>Wallet Balance</h2>
-        <h1>₹ 500</h1>
-      </div>
+        <div className="flex-1 p-6">
+          <h1 className="text-white text-3xl font-bold mb-6">
+            Dashboard
+          </h1>
 
-      {/* Match Stats */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-          gap: "20px",
-          marginBottom: "30px",
-        }}
-      >
-        <div
-          style={{
-            background: "#1e293b",
-            padding: "20px",
-            borderRadius: "12px",
-          }}
-        >
-          <h3>Total Matches</h3>
-          <h1>25</h1>
-        </div>
+          {/* Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-slate-800 p-6 rounded-2xl">
+              <h2 className="text-gray-400 mb-2">
+                Wallet Balance
+              </h2>
 
-        <div
-          style={{
-            background: "#1e293b",
-            padding: "20px",
-            borderRadius: "12px",
-          }}
-        >
-          <h3>Wins</h3>
-          <h1>18</h1>
-        </div>
+              <h1 className="text-white text-3xl font-bold">
+                ₹500
+              </h1>
+            </div>
 
-        <div
-          style={{
-            background: "#1e293b",
-            padding: "20px",
-            borderRadius: "12px",
-          }}
-        >
-          <h3>Losses</h3>
-          <h1>7</h1>
-        </div>
-      </div>
+            <div className="bg-slate-800 p-6 rounded-2xl">
+              <h2 className="text-gray-400 mb-2">
+                Total Matches
+              </h2>
 
-      {/* Active Matches */}
-      <div
-        style={{
-          background: "#1e293b",
-          padding: "20px",
-          borderRadius: "12px",
-        }}
-      >
-        <h2>Active Matches</h2>
+              <h1 className="text-white text-3xl font-bold">
+                25
+              </h1>
+            </div>
 
-        <div
-          style={{
-            marginTop: "20px",
-            display: "flex",
-            flexDirection: "column",
-            gap: "15px",
-          }}
-        >
-          <div
-            style={{
-              background: "#334155",
-              padding: "15px",
-              borderRadius: "10px",
-            }}
-          >
-            Match #1001 — ₹50 Entry
+            <div className="bg-slate-800 p-6 rounded-2xl">
+              <h2 className="text-gray-400 mb-2">
+                Total Wins
+              </h2>
+
+              <h1 className="text-white text-3xl font-bold">
+                18
+              </h1>
+            </div>
           </div>
 
-          <div
-            style={{
-              background: "#334155",
-              padding: "15px",
-              borderRadius: "10px",
-            }}
-          >
-            Match #1002 — ₹100 Entry
-          </div>
+          {/* Active Matches */}
+          <div className="bg-slate-800 mt-8 p-6 rounded-2xl">
+            <h2 className="text-white text-2xl font-bold mb-4">
+              Active Matches
+            </h2>
 
-          <div
-            style={{
-              background: "#334155",
-              padding: "15px",
-              borderRadius: "10px",
-            }}
-          >
-            Match #1003 — ₹200 Entry
+            <div className="flex flex-col gap-4">
+              <div className="bg-slate-700 p-4 rounded-lg text-white">
+                Match #1001 — ₹50 Entry
+              </div>
+
+              <div className="bg-slate-700 p-4 rounded-lg text-white">
+                Match #1002 — ₹100 Entry
+              </div>
+
+              <div className="bg-slate-700 p-4 rounded-lg text-white">
+                Match #1003 — ₹200 Entry
+              </div>
+            </div>
           </div>
         </div>
       </div>
