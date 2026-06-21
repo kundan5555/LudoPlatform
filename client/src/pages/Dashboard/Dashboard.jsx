@@ -1,7 +1,36 @@
 import Navbar from "../../components/Navbar";
 import Sidebar from "../../components/Sidebar";
+import { generateRoom } from "../../services/ludoService";
+import { useState } from "react";
 
 function Dashboard() {
+
+  const [roomCode, setRoomCode] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleGenerateRoom = async () => {
+
+    try {
+
+      setLoading(true);
+
+      const response = await generateRoom();
+
+      console.log(response.data);
+
+      // Adjust this based on API response
+      setRoomCode(response.data.roomcode);
+
+    } catch (error) {
+
+      console.error(error);
+
+    } finally {
+
+      setLoading(false);
+
+    }
+  };
   return (
     <div className="bg-slate-900 min-h-screen">
       <Navbar />
@@ -46,7 +75,31 @@ function Dashboard() {
               </h1>
             </div>
           </div>
-
+                    {/* Generate Room */}
+        <div className="bg-slate-800 mt-8 p-6 rounded-2xl">
+          <h2 className="text-white text-2xl font-bold mb-4">
+          Generate Ludo Room
+          </h2>
+          <button onClick={handleGenerateRoom}
+          className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg">
+          Generate Room Code
+          </button>
+          {loading && (
+            <p className="text-yellow-400 mt-4">
+            Generating room...
+          </p>
+          )}
+          {roomCode && (
+          <div className="mt-6">
+            <h3 className="text-gray-400">
+            Room Code
+            </h3>
+            <h1 className="text-green-400 text-4xl font-bold mt-2">
+            {roomCode}
+            </h1>
+          </div>
+           )}
+        </div>
           {/* Active Matches */}
           <div className="bg-slate-800 mt-8 p-6 rounded-2xl">
             <h2 className="text-white text-2xl font-bold mb-4">
